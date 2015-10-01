@@ -1,7 +1,7 @@
-defmodule Plywood.UserController do
-  use Plywood.Web, :controller
+defmodule Melamine.UserController do
+  use Melamine.Web, :controller
 
-  alias Plywood.User
+  alias Melamine.User
 
   plug :scrub_params, "user" when action in [:create, :update]
 
@@ -19,7 +19,7 @@ defmodule Plywood.UserController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Plywood.ChangesetView, "error.json", changeset: changeset)
+        |> render(Melamine.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -27,11 +27,11 @@ defmodule Plywood.UserController do
     %{:changeset => changeset, :new_auth_token => new_auth_token} = User.add_token(user)
     case Repo.update(changeset) do
       {:ok, user} ->
-        render conn, Plywood.UserView, "user_auth.json", %{user: user, auth_token: new_auth_token}
+        render conn, Melamine.UserView, "user_auth.json", %{user: user, auth_token: new_auth_token}
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Plywood.ChangesetView, "error.json", changeset: changeset)
+        |> render(Melamine.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -50,7 +50,7 @@ defmodule Plywood.UserController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Plywood.ChangesetView, "error.json", changeset: changeset)
+        |> render(Melamine.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

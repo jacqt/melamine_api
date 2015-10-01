@@ -1,8 +1,8 @@
-defmodule Plywood.AuthenticationController do
-  use Plywood.Web, :controller
+defmodule Melamine.AuthenticationController do
+  use Melamine.Web, :controller
 
-  alias Plywood.Authentication
-  alias Plywood.User
+  alias Melamine.Authentication
+  alias Melamine.User
 
   def login_or_create(conn, %{ "facebook_token" => facebook_token } = to_merge) do
     case Facebook.me("email,name", facebook_token) do
@@ -16,9 +16,9 @@ defmodule Plywood.AuthenticationController do
             |> Dict.put("auth_tokens", [])
             |> Dict.merge(to_merge)
             |> Dict.delete("id")
-            Plywood.UserController.create(conn, user_params)
+            Melamine.UserController.create(conn, user_params)
           user ->
-            Plywood.UserController.show_with_new_token(conn, user)
+            Melamine.UserController.show_with_new_token(conn, user)
         end
     end
   end
