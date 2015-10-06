@@ -35,6 +35,7 @@ defmodule Melamine.Mixfile do
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:facebook,"0.4.0",[github: "mweibel/facebook.ex"]},
+     {:geo, "~> 0.16.1"},
      {:cowboy, "~> 1.0"},
      {:cors_plug, "~> 0.1.3"}]
   end
