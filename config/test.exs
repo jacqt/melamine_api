@@ -19,4 +19,5 @@ config :melamine, Melamine.Repo,
   password: "postgres",
   database: "melamine_test",
   hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  extensions: [{Geo.PostGIS.Extension, library: Geo}]

@@ -15,9 +15,12 @@ defmodule Melamine.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
+    %{
+      id: user.id,
       email: user.email,
       facebook_id: user.facebook_id,
-      facebook_token: user.facebook_token}
+      facebook_token: user.facebook_token,
+      last_location: user.last_location
+     }
   end
 end
